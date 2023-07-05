@@ -1,0 +1,146 @@
+﻿@model Prantor.MMS.Entities.Student
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_InnerLayout.cshtml";
+}
+
+<h2 class="text-center">Student Edit</h2>
+
+@if (!string.IsNullOrEmpty(ViewBag.Error))
+{
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Error!</strong> @ViewBag.Error
+    </div>
+}
+else
+{
+    <div class="col-md-6 boxDiv" align="center">
+
+    @using (Html.BeginForm("Edit"))
+    {
+        <div class="form-group">
+            @Html.LabelFor(m => m.ID)
+            @Html.TextBoxFor(m => m.ID, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Name, new { @class = "required" })
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @placeholder = "Name" })
+            @Html.ValidationMessageFor(m => m.Name)
+        </div>
+         <div class="form-group">
+            @Html.LabelFor(m => m.MadrasaId, "Madrasa", htmlAttributes: new { @class = "required" })
+            @{
+        Prantor.MMS.Data.MMSDbContext db = new Prantor.MMS.Data.MMSDbContext();
+        List<Prantor.MMS.Entities.Madrasa> ListMadrasa = db.Madrasas.ToList();
+
+        <select name="MadrasaId" class="form-control">
+            @{
+                <option value="" disabled hidden selected>Select Madrasa</option>
+        foreach (Prantor.MMS.Entities.Madrasa s in ListMadrasa)
+        {
+            if (s.ID == Model.MadrasaId)
+            {
+                <option value="@s.ID" selected="selected">@s.Name</option>
+            }
+           
+        }
+            }
+        </select>
+            }
+            @Html.ValidationMessageFor(m => m.MadrasaId)
+        </div>
+        
+        
+        <div class="form-group">
+            @Html.LabelFor(m => m.FatherName, new { @class = "required" })
+            @Html.TextBoxFor(m => m.FatherName, new { @class = "form-control", @placeholder = "Father Name" })
+            @Html.ValidationMessageFor(m => m.FatherName)
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(m => m.FatherNid, new { @class = "required" })
+            @Html.TextBoxFor(m => m.FatherNid, new { @class = "form-control", @placeholder = "Father NID" })
+            @Html.ValidationMessageFor(m => m.FatherNid)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.MotherName, new { @class = "required" })
+            @Html.TextBoxFor(m => m.MotherName, new { @class = "form-control", @placeholder = "Mother NID" })
+            @Html.ValidationMessageFor(m => m.MotherName)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.MotherNid, new { @class = "required" })
+            @Html.TextBoxFor(m => m.MotherNid, new { @class = "form-control", @placeholder = "Mother NID" })
+            @Html.ValidationMessageFor(m => m.MotherNid)
+        </div>
+
+  
+        <div class="form-group">
+            @Html.LabelFor(m => m.PhoneNo, new { @class = "required" })
+            @Html.TextBoxFor(m => m.PhoneNo, new { @class = "form-control digit", @placeholder = "Phone no." })
+            @Html.ValidationMessageFor(m => m.PhoneNo)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Address, new { @class = "required" })
+            @Html.TextBoxFor(m => m.Address, new { @class = "form-control ", @placeholder = "Address" })
+            @Html.ValidationMessageFor(m => m.Address)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email)
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control ", @placeholder = "Email" })
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.DateOfBirth, new { @class = "required" })
+            @Html.TextBoxFor(m => m.DateOfBirth, new { @class = "form-control datepicker" })
+            @Html.ValidationMessageFor(m => m.DateOfBirth)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.BloodGroupId, new { @class = "required" })
+            @Html.DropDownListFor(m => m.BloodGroupId,
+                new SelectList(Prantor.MMS.Framework.EnumCollection.GetEnumList(typeof(Prantor.MMS.Framework.EnumCollection.BloodGroupEnum)), "ID", "Name"),
+                    "Select your Blood Group", new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.BloodGroupId)
+        </div>
+        <div class="radio">
+            <label>
+                @Html.RadioButtonFor(m => m.GenderId, (int)Prantor.MMS.Framework.EnumCollection.GenderEnum.Male) &nbsp; Male
+            </label>
+            <label>
+                @Html.RadioButtonFor(m => m.GenderId, (int)Prantor.MMS.Framework.EnumCollection.GenderEnum.Female) &nbsp; Female
+            </label>
+        </div>
+        <button type="submit" class="btn btn-primary">
+            Save
+        </button>
+    }
+    <br />
+</div>
+}
+
+
+
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $(".digit").keypress(function (e) {
+                if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                    $("#errormsg").html("Digits Only").show().fadeOut("slow");
+                    return false;
+                }
+            });
+        });
+
+        $(document).ready(function () {
+            $('.datepicker').datepicker();
+        });
+
+    </script>
+
+
+}
+

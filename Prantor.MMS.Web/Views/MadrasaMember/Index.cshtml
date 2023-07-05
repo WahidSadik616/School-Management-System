@@ -1,0 +1,58 @@
+﻿@model Prantor.MMS.Framework.Result<List<Prantor.MMS.Entities.Madrasa>>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MadrasaMemberLayout.cshtml";
+}
+<div class="container"><div class="jumbotron">
+    <h1>مدرسة قومي ، بنغلاديش</h1>
+    <h2>Qawmi Madrasa,Bangladesh</h2>
+    <br />
+
+</div>
+ </div>
+
+<div class="container">
+    <div class="row-cols-auto">
+
+
+
+        @{
+            Prantor.MMS.Data.MMSDbContext db = new Prantor.MMS.Data.MMSDbContext();
+            List<Prantor.MMS.Entities.Madrasa> ListMadrasa = db.Madrasas.ToList();
+            foreach (Prantor.MMS.Entities.Madrasa s in ListMadrasa)
+            {
+                if (@s.Name != "Kowmi Madrasa Community")
+                {
+                    
+                    <div class="col-md-6">
+                        <h2>@s.Name </h2>
+                        <p>
+                            <b>Address:</b> @s.Address
+                        </p>
+                        <p>
+                            <b>Director:</b> @s.DirectorName
+                        </p>
+                        <p>
+                            <b>Contact Number:</b> @s.ContactNo
+                        </p>
+                        <p><a class="btn btn-primary" href="@Url.Action("MadrasaDetails", "MadrasaMember", new { id =@s.ID })">Details</a>&nbsp;</p>
+                    </div>
+                }
+
+
+            }}
+
+
+
+
+    </div>
+
+</div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#homeMenu").addClass('active');
+        });
+    </script>
+}

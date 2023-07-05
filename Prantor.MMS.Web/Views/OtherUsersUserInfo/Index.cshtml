@@ -1,0 +1,138 @@
+﻿@model Prantor.MMS.Framework.Result<List<Prantor.MMS.Entities.UserInfo>>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_InnerLayout.cshtml";
+}
+
+<h1>User Information</h1>
+<b>Search:</b>
+<input value="@Request.Params["key"]" type="text" id="searchKey" />&nbsp;
+<button class="btn btn-xs btn-default" onclick="SearchClick('@Url.Action("Index", "OtherUsersUserInfo", new { key = "" })')">Search</button>&nbsp;
+<button class="btn btn-xs btn-default" onclick="RefreshClick('@Url.Action("Index", "OtherUsersUserInfo", new { key = "" })')">Refresh</button>&nbsp;
+<a class="btn btn-xs btn-primary" href="@Url.Action("Add", "OtherUsersUserInfo", new { id = -1 })">Add</a>&nbsp;
+<br />
+<br />
+
+@if (!string.IsNullOrEmpty(ViewBag.Error))
+{
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Error!</strong> @ViewBag.Error
+    </div>
+}
+
+@if (Model.HasError)
+{
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Error!</strong> @Model.Message
+    </div>
+}
+
+else
+{
+    <table class="table table-bordered">
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>UserName</td>
+            <td>PhoneNo.</td>
+            <td>Address</td>
+            <td>BloodGr.</td>
+            <td>Gender</td>
+            <td>DateOfBirth</td>
+            <td>Action</td>
+
+        </tr>
+        @foreach (var user in Model.Data)
+        {
+
+            if (@user.UserTypeId== 0)
+            {
+                <tr>
+
+                    <td>@user.ID</td>
+                    <td>@user.Name</td>
+                    <td>@user.UserName</td>
+                    <td>@user.PhoneNo</td>
+                    <td>@user.Address</td>
+                    @if (@user.BloodGroupId == 0)
+                    {
+                        <td>APos</td>
+                    }
+
+                    @if (@user.BloodGroupId == 1)
+                    {
+                        <td>ANeg</td>
+                    }
+                    @if (@user.BloodGroupId == 2)
+                    {
+                        <td>BPos</td>
+                    }
+                    @if (@user.BloodGroupId == 3)
+                    {
+                        <td>BNeg</td>
+                    }
+                    @if (@user.BloodGroupId == 4)
+                    {
+                        <td>ABPos</td>
+                    }
+                    @if (@user.BloodGroupId == 5)
+                    {
+                        <td>ABNeg</td>
+                    }
+                    @if (@user.BloodGroupId == 6)
+                    {
+                        <td>OPos</td>
+                    }
+                    @if (@user.BloodGroupId == 7)
+                    {
+                        <td>ONeg</td>
+                    }
+                    @if (@user.GenderId == 0)
+                    {
+                        <td>Male</td>
+                    }
+                    @if (@user.GenderId == 1)
+                    {
+                        <td>Female</td>
+                    }
+                    <td>@user.DateOfBirth</td>
+                    
+
+                    <td>
+                        <a class="btn btn-xs btn-info" href="@Url.Action("Edit", "OtherUsersUserInfo", new { id = user.ID })">Edit</a>  |
+                        <a class="btn btn-xs btn-danger" href="#" onclick="DeleteUserInfo('@Url.Action("Delete", "OtherUsersUserInfo", new { id = user.ID })')">Delete</a>
+                    </td>
+
+
+                </tr>
+            }
+
+
+
+
+
+        }
+    </table>
+}
+
+@section scripts
+{
+    <script>
+        function SearchClick(url) {
+            var value = $('#searchKey').val();
+            url = url + '/Index/?key=' + value;
+            window.location.href=url;
+        }
+        function RefreshClick(url) {
+            var value = "";
+            url = url + '/Index/?key=' + value;
+            window.location.href=url;
+        }
+        function DeleteUserInfo(url) {
+            if(confirm("Are you Sure?"))
+                window.location.href=url;
+        }
+    </script>
+}

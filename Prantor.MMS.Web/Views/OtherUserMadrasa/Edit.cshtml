@@ -1,0 +1,81 @@
+﻿@model Prantor.MMS.Entities.Madrasa
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_OtherLayout.cshtml";
+}
+
+<h2 class="text-center">Madrasa Information</h2>
+
+@if (!string.IsNullOrEmpty(ViewBag.Error))
+{
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Error!</strong> @ViewBag.Error
+    </div>
+}
+else
+{
+    <div class="row">
+    <div class="col-md-3"></div>
+        <div class="col-md-6 boxDiv" align="center">
+
+            @using (Html.BeginForm("Edit"))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ID)
+                    @Html.TextBoxFor(m => m.ID, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Name, new { @class = "required" })
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @placeholder = "Name" })
+                    @Html.ValidationMessageFor(m => m.Name)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ContactNo, new { @class = "required" })
+                    @Html.TextBoxFor(m => m.ContactNo, new { @class = "form-control digit", @placeholder = "Phone no." })
+                    @Html.ValidationMessageFor(m => m.ContactNo)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Address, new { @class = "required" })
+                    @Html.TextBoxFor(m => m.Address, new { @class = "form-control ", @placeholder = "Address" })
+                    @Html.ValidationMessageFor(m => m.Address)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.DirectorName, new { @class = "required" })
+                    @Html.TextBoxFor(m => m.DirectorName, new { @class = "form-control ", @placeholder = "Address" })
+                    @Html.ValidationMessageFor(m => m.DirectorName)
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    Save
+                </button>
+            }
+            <br />
+        </div>
+        </div>
+    
+}
+
+
+
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $(".digit").keypress(function (e) {
+                if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                    $("#errormsg").html("Digits Only").show().fadeOut("slow");
+                    return false;
+                }
+            });
+        });
+
+
+    </script>
+
+
+}
+
+
+
+
+

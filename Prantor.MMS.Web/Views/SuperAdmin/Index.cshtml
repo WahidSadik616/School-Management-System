@@ -1,0 +1,994 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_SuperAdminLayout.cshtml";
+}
+<div class="row">
+    <div class="col-md-3" >
+        
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-info">
+                <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                        <a style="text-decoration:none; display:block;" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            <span class="glyphicon glyphicon-user"></span>
+                            Users
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body" style="border-style:solid">
+                        <div class="list-group table-of-contents">
+                            <a class="list-group-item" href="#" onclick="AddTab('UserInfo', '@Url.Action("Index","SuperAdminUserInfo")')">
+                                <span class="glyphicon glyphicon-user"></span>
+                                UserInfo
+                            </a>
+
+                            <a class="list-group-item" href="#" onclick="AddTab('Student', '@Url.Action("Index","SuperAdminStudent")')">
+                                <span class="glyphicon glyphicon-user"></span>
+                                Students
+                            </a>
+
+                            <a class="list-group-item" href="#" onclick="AddTab('Parent', '@Url.Action("Index","SuperAdminParent")')">
+                                <span class="glyphicon glyphicon-user"></span>
+                                Parents
+                            </a>
+
+                            <a class="list-group-item" href="#" onclick="AddTab('Teacher', '@Url.Action("Index","SuperAdminTeacher")')">
+                                <span class="glyphicon glyphicon-user"></span>
+                                Teachers
+                            </a>
+                            <a class="list-group-item" href="#" onclick="AddTab('Stafs', '@Url.Action("Index", "SuperAdminStafs")')">
+                                <span class="glyphicon glyphicon-user"></span>
+                                Stafs
+                            </a>
+                            <a class="list-group-item" href="#" onclick="AddTab('Commettee', '@Url.Action("Index", "SuperAdminCommettee")')">
+                                <span class="glyphicon glyphicon-user"></span>
+                                Commettee
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-info">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                    <h4 class="panel-title">
+                        <a style="text-decoration: none; display: block;" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <span class="glyphicon glyphicon-education"></span>
+                            Academic
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="panel-body" style="border-style:solid">
+                        <div class="list-group table-of-contents">
+                            <a class="list-group-item" href="#" onclick="AddTab('Madrasa', '@Url.Action("Index", "SuperAdminMadrasa")')">
+                                <span class="glyphicon glyphicon-education"></span>
+                                Madrasa
+                            </a>
+                            <a class="list-group-item" href="#" onclick="AddTab('Class')">
+                                <span class="glyphicon glyphicon-education"></span>
+                                Class
+                            </a>
+
+                            <a class="list-group-item" href="#" onclick="AddTab('Section')">
+                                <span class="glyphicon glyphicon-education"></span>
+                                Section
+                            </a>
+
+                            <a class="list-group-item" href="#" onclick="AddTab('Subject')">
+                                <span class="glyphicon glyphicon-education"></span>
+                                Subject
+                            </a>
+
+                            <a class="list-group-item" href="#" onclick="AddTab('Syllabus')">
+                                <span class="glyphicon glyphicon-education"></span>
+                                Syllabus
+                            </a>
+
+                            <a class="list-group-item" href="#" onclick="AddTab('Assignment')">
+                                <span class="glyphicon glyphicon-education"></span>
+                                Assignment
+                            </a>
+
+                            <a class="list-group-item" href="#" onclick="AddTab('Routine')">
+                                <span class="glyphicon glyphicon-education"></span>
+                                Routine
+                            </a>
+
+                            <a class="list-group-item" href="#" onclick="AddTab('Zoom Live Class')">
+                                <span class="glyphicon glyphicon-education"></span>
+                                Zoom Live Class
+                            </a>
+
+                            <a class="list-group-item" href="#" onclick="AddTab('Tutorial')">
+                                <span class="glyphicon glyphicon-education"></span>
+                                Tutorial
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="panel panel-info">
+                <div class="panel-heading" role="tab" id="headingThree">
+                    <h4 class="panel-title">
+                        <a style="text-decoration: none; display: block;" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <span class="glyphicon glyphicon-list-alt"></span>
+                            Attendance
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                    <div class="panel-body" style="border-style:solid">
+                        <div class="list-group table-of-contents">
+                            <a class="list-group-item" href="#" onclick="AddTab('Student Attendance')">
+                                <span class="glyphicon glyphicon-list-alt"></span>
+                                Student Attendance
+                            </a>
+
+                            <a class="list-group-item" href="#" onclick="AddTab('Teacher Attendance')">
+                                <span class="glyphicon glyphicon-list-alt"></span>
+                                Teacher Attendance
+                            </a>
+
+                            <a class="list-group-item" href="#" onclick="AddTab('Staff/User Attendance')">
+                                <span class="glyphicon glyphicon-list-alt"></span>
+                                Staff/User Attendance
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="panel panel-info">
+                <div class="panel-heading" role="tab" id="headingFour">
+                    <h4 class="panel-title">
+                        <a style="text-decoration: none; display: block;" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            <span class="glyphicon glyphicon-edit"></span>
+                            Exam
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                    <div class="panel-body" style="border-style:solid">
+                        <div class="list-group table-of-contents">
+                            <a class="list-group-item" href="#" onclick="AddTab('Exam Schedule')">
+                                <span class="glyphicon glyphicon-edit"></span>
+                                Exam Schedule
+                            </a>
+
+                            <a class="list-group-item" href="#" onclick="AddTab('Exam Grade')">
+                                <span class="glyphicon glyphicon-edit"></span>
+                                Exam Grade
+                            </a>
+
+                            <a class="list-group-item" href="#" onclick="AddTab('Exam Attendance')">
+                                <span class="glyphicon glyphicon-edit"></span>
+                                Exam Attendance
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="panel panel-info">
+                <div class="panel-heading" role="tab" id="headingFive">
+                    <h4 class="panel-title">
+                        <a style="text-decoration: none; display: block;" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            <span class="glyphicon glyphicon-check"></span>
+                            Mark
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                    <div class="panel-body" style="border-style:solid">
+                        <div class="list-group table-of-contents">
+                            <a class="list-group-item" href="#" onclick="AddTab('Mark')">
+                                <span class="glyphicon glyphicon-check"></span>
+                                Mark
+                            </a>
+
+                            <a class="list-group-item" href="#" onclick="AddTab('Mark Distribution')">
+                                <span class="glyphicon glyphicon-check"></span>
+                                Mark Distribution
+                            </a>
+
+                            <a class="list-group-item" href="#" onclick="AddTab('Promotion')">
+                                <span class="glyphicon glyphicon-check"></span>
+                                Promotion
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="panel panel-info">
+                <div class="panel-heading" role="tab" id="heading13">
+                    <h4 class="panel-title">
+                        <a style="text-decoration: none; display: block;" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse13" aria-expanded="false" aria-controls="collapse13">
+                            <span class="glyphicon glyphicon-book"></span>
+                            Library
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse13" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading13">
+                    <div class="panel-body" style="border-style:solid">
+                        <div class="list-group table-of-contents">
+                            <a class="list-group-item" href="#" onclick="AddTab('Members')">
+                                <span class="glyphicon glyphicon-book"></span>
+                                Members
+                            </a>
+                            <a class="list-group-item" href="#" onclick="AddTab('Books')">
+                                <span class="glyphicon glyphicon-book"></span>
+                                Books
+                            </a>
+                            <a class="list-group-item" href="#" onclick="AddTab('Issue')">
+                                <span class="glyphicon glyphicon-book"></span>
+                                Issue
+                            </a>
+                            <a class="list-group-item" href="#" onclick="AddTab('E-Books')">
+                                <span class="glyphicon glyphicon-book"></span>
+                                E-Books
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="panel panel-info">
+                <div class="panel-heading" role="tab" id="heading20">
+                    <h4 class="panel-title">
+                        <a style="text-decoration: none; display: block;" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse20" aria-expanded="false" aria-controls="collapse20">
+                            <span class="glyphicon glyphicon-modal-window"></span>
+                            Accounts
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse20" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading20">
+                    <div class="panel-body" style="border-style:solid">
+                        <div class="list-group table-of-contents">
+                            <a class="list-group-item" href="#" onclick="AddTab('Fees Type')">
+                                <span class="glyphicon glyphicon-modal-window"></span>
+                                Fees Type
+                            </a>
+                            <a class="list-group-item" href="#" onclick="AddTab('Invoice')">
+                                <span class="glyphicon glyphicon-modal-window"></span>
+                                Invoice
+                            </a>
+                            <a class="list-group-item" href="#" onclick="AddTab('Payment History')">
+                                <span class="glyphicon glyphicon-modal-window"></span>
+                                Payment History
+                            </a>
+                            <a class="list-group-item" href="#" onclick="AddTab('Expense')">
+                                <span class="glyphicon glyphicon-modal-window"></span>
+                                Expense
+                            </a>
+                            <a class="list-group-item" href="#" onclick="AddTab('Income')">
+                                <span class="glyphicon glyphicon-modal-window"></span>
+                                Income
+                            </a>
+                            <a class="list-group-item" href="#" onclick="AddTab('Global Payment')">
+                                <span class="glyphicon glyphicon-modal-window"></span>
+                                Global Payment
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="panel panel-info">
+                <div class="panel-heading" role="tab" id="heading22">
+                    <h4 class="panel-title">
+                        <a style="text-decoration: none; display: block;" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse22" aria-expanded="false" aria-controls="collapse22">
+                            <span class="glyphicon glyphicon-cog"></span>
+                            Settings
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse22" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading22">
+                    <div class="panel-body" style="border-style:solid">
+                        <div class="list-group table-of-contents">
+                            <a class="list-group-item" href="#" onclick="AddTab('General Settings')">
+                                <span class="glyphicon glyphicon-cog"></span>
+                                General Settings
+                            </a>
+                            <a class="list-group-item" href="#" onclick="AddTab('Frontend Settings')">
+                                <span class="glyphicon glyphicon-cog"></span>
+                                Frontend Settings
+                            </a>
+                            <a class="list-group-item" href="#" onclick="AddTab('Payment Settings')">
+                                <span class="glyphicon glyphicon-cog"></span>
+                                Payment Settings
+                            </a>
+                            <a class="list-group-item" href="#" onclick="AddTab('SMS Settings')">
+                                <span class="glyphicon glyphicon-cog"></span>
+                                SMS Settings
+                            </a>
+                            <a class="list-group-item" href="#" onclick="AddTab('Email Settings')">
+                                <span class="glyphicon glyphicon-cog"></span>
+                                Email Settings
+                            </a>
+                            <a class="list-group-item" href="#" onclick="AddTab('Mark Settings')">
+                                <span class="glyphicon glyphicon-cog"></span>
+                                Mark Settings
+                            </a>
+                            <a class="list-group-item" href="#" onclick="AddTab('Zoom Settings')">
+                                <span class="glyphicon glyphicon-cog"></span>
+                                Zoom Settings
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="panel panel-info">
+                <div class="panel-heading" role="tab" id="heading6">
+                    <h4 class="panel-title">
+                        <a style="text-decoration: none; display: block;" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                            <span class="glyphicon glyphicon-envelope"></span>
+                            Message
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading6">
+                    <div class="panel-body" style="border-style:solid">
+                        <div class="list-group table-of-contents">
+                            <a class="list-group-item" href="#" onclick="AddTab('Message Box')">
+                                <span class="glyphicon glyphicon-envelope"></span>
+                                Message Box
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="panel panel-info">
+                <div class="panel-heading" role="tab" id="heading7">
+                    <h4 class="panel-title">
+                        <a style="text-decoration: none; display: block;" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse7" aria-expanded="false" aria-controls="collapse7">
+                            <span class="glyphicon glyphicon-comment"></span>
+                            Email/SMS
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading7">
+                    <div class="panel-body" style="border-style:solid">
+                        <div class="list-group table-of-contents">
+                            <a class="list-group-item" href="#" onclick="AddTab('Email Box')">
+                                <span class="glyphicon glyphicon-comment"></span>
+                                Email Box
+                            </a>
+                            <a class="list-group-item" href="#" onclick="AddTab('SMS Box')">
+                                <span class="glyphicon glyphicon-comment"></span>
+                                SMS Box
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="panel panel-info">
+                <div class="panel-heading" role="tab" id="heading8">
+                    <h4 class="panel-title">
+                        <a style="text-decoration: none; display: block; text-align: center" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse8" aria-expanded="false" aria-controls="collapse8">
+                            Online Exam
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading8">
+                    <div class="panel-body" style="border-style:solid">
+                        <div class="list-group table-of-contents">
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Question Group
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Question Level
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Question Bank
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Online Exam
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Instruction
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Take Exam
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="panel panel-info">
+                <div class="panel-heading" role="tab" id="heading9">
+                    <h4 class="panel-title">
+                        <a style="text-decoration: none; display: block; text-align: center" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse9" aria-expanded="false" aria-controls="collapse9">
+                            Payroll
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse9" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading9">
+                    <div class="panel-body" style="border-style:solid">
+                        <div class="list-group table-of-contents">
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Salary Template
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Hourly Template
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Manage Salary
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Make Payment
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Overtime
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="panel panel-info">
+                <div class="panel-heading" role="tab" id="heading10">
+                    <h4 class="panel-title">
+                        <a style="text-decoration: none; display: block; text-align: center" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse10" aria-expanded="false" aria-controls="collapse10">
+                            Asset Management
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse10" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading10">
+                    <div class="panel-body" style="border-style:solid">
+                        <div class="list-group table-of-contents">
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Vendor
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Location
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Asset Category
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Asset
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Asset Assignment
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Purchase
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="panel panel-info">
+                <div class="panel-heading" role="tab" id="heading11">
+                    <h4 class="panel-title">
+                        <a style="text-decoration: none; display: block; text-align: center" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse11" aria-expanded="false" aria-controls="collapse11">
+                            Inventory
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse11" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading11">
+                    <div class="panel-body" style="border-style:solid">
+                        <div class="list-group table-of-contents">
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Category
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Product
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Warehouse
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Supplier
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Purchase
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Sale
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="panel panel-info">
+                <div class="panel-heading" role="tab" id="heading12">
+                    <h4 class="panel-title">
+                        <a style="text-decoration: none; display: block; text-align: center" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse12" aria-expanded="false" aria-controls="collapse12">
+                            Leave Application
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse12" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading12">
+                    <div class="panel-body" style="border-style:solid">
+                        <div class="list-group table-of-contents">
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Leave Category
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Leave Assign
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Leave Apply
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Leave  Application
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="panel panel-info">
+                <div class="panel-heading" role="tab" id="heading14">
+                    <h4 class="panel-title">
+                        <a style="text-decoration: none; display: block; text-align: center" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse14" aria-expanded="false" aria-controls="collapse14">
+                            Hostel
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse14" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading14">
+                    <div class="panel-body" style="border-style:solid">
+                        <div class="list-group table-of-contents">
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Hostel
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Category
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Members
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="panel panel-info">
+                <div class="panel-heading" role="tab" id="heading15">
+                    <h4 class="panel-title">
+                        <a style="text-decoration: none; display: block; text-align: center" class="collapsed" role="button" dat-toggle="collapse" data-parent="#accordion" href="#collapse15" aria-expanded="false" aria-controls="collapse15">
+                            Announcement
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse15" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading15">
+                    <div class="panel-body" style="border-style:solid">
+                        <div class="list-group table-of-contents">
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Notice
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Event
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Holiday
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="panel panel-info">
+                <div class="panel-heading" role="tab" id="heading16">
+                    <h4 class="panel-title">
+                        <a style="text-decoration: none; display: block; text-align: center" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse16" aria-expanded="false" aria-controls="collapse16">
+                            Report
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse16" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading16">
+                    <div class="panel-body" style="border-style:solid">
+                        <div class="list-group table-of-contents">
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Class Report
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Sponsorship Report
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Student Report
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                ID Card Report
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Admit Card Report
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Routine Report
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Exam Schedule Report
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Attendance Report
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Attendance Overview Report
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Library Book Report
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Library Card Report
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Library Book Issue Report
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Terminal Report
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Merit Stage Report
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Tabulation Sheet Report
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Mark Sheet Report
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Progress Card Report
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Student Session Report
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Online Exam Report
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Online Exam Question Report
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Online Exam Answer Report
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Online Admission Report
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Certificate Report
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Leave Application Report
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Product Purchase Report
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Product Sale Report
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Search Payment Fees Report
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Fees Report
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Due Fees Report
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Balance Fees Report
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Transaction Report
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Student Fine Report
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Overtime Report
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Salary Report
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Account Ledger Report
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="panel panel-info">
+                <div class="panel-heading" role="tab" id="heading17">
+                    <h4 class="panel-title">
+                        <a style="text-decoration: none; display: block; text-align: center" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse17" aria-expanded="false" aria-controls="collapse17">
+                            Google Meet Live Class
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse17" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading17">
+                    <div class="panel-body" style="border-style:solid">
+                        <div class="list-group table-of-contents">
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                G-Meet Live Class
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="panel panel-info">
+                <div class="panel-heading" role="tab" id="heading18">
+                    <h4 class="panel-title">
+                        <a style="text-decoration: none; display: block; text-align: center" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse18" aria-expanded="false" aria-controls="collapse18">
+                            Child
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse18" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading18">
+                    <div class="panel-body" style="border-style:solid">
+                        <div class="list-group table-of-contents">
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Activities
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Activities Category
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Child Care
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="panel panel-info">
+                <div class="panel-heading" role="tab" id="heading19">
+                    <h4 class="panel-title">
+                        <a style="text-decoration: none; display: block; text-align: center" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse19" aria-expanded="false" aria-controls="collapse19">
+                            Transport
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse19" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading19">
+                    <div class="panel-body" style="border-style:solid">
+                        <div class="list-group table-of-contents">
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Transport
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Members
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="panel panel-info">
+                <div class="panel-heading" role="tab" id="heading21">
+                    <h4 class="panel-title">
+                        <a style="text-decoration: none; display: block; text-align: center" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse21" aria-expanded="false" aria-controls="collapse21">
+                            Administrator
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse21" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading21">
+                    <div class="panel-body" style="border-style:solid">
+                        <div class="list-group table-of-contents">
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Academic Year
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Student Group
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Complain
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Certificate Template
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                System Admin
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Reset Password
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Social Link
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Mail/SMS Template
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Import
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Backup
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Role
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Permission
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Addons
+                            </a>
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Update
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="panel panel-info">
+                <div class="panel-heading" role="tab" id="heading23">
+                    <h4 class="panel-title">
+                        <a style="text-decoration: none; display: block; text-align: center" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse23" aria-expanded="false" aria-controls="collapse23">
+                            Online Admission
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse23" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading23">
+                    <div class="panel-body" style="border-style:solid">
+                        <div class="list-group table-of-contents">
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Online Admission
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="panel panel-info">
+                <div class="panel-heading" role="tab" id="heading24">
+                    <h4 class="panel-title">
+                        <a style="text-decoration: none; display: block; text-align: center" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse24" aria-expanded="false" aria-controls="collapse24">
+                            Visitor Information
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse24" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading24">
+                    <div class="panel-body" style="border-style:solid">
+                        <div class="list-group table-of-contents">
+                            <a class="list-group-item" href="#" style="text-align:center;">
+                                Visitor Information
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+    </div>
+    <div class="col-md-9" style="height:800px; border-left: 1px solid black">
+       
+
+        <div>
+
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist" id="tabMenu">
+                <li role="presentation" class="active"><a href="#div1" aria-controls="home" role="tab" data-toggle="tab">
+                    Dashboard 
+                    </a>
+                   
+                </li>
+               
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content" id="tabDiv">
+                <div role="tabpanel" class="tab-pane active" id="div1">
+                   Dashboard
+                </div>
+                
+            </div>
+
+        </div>
+
+    </div>
+  
+</div>
+
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#accordion").on('click', function () {
+                $(".collapse").removeClass("show");
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#homeMenu").addClass('active');
+        });
+    </script>
+
+<script>
+    var i = 2;
+    function AddTab(name, url) {
+        var height = $(document).height() - 150;
+        $('#tabMenu').append('<li role="presentation" id="li' + i + '"><a href="#div' + i + '" aria-controls="home" role="tab" data-toggle="tab">' + name + '&nbsp;&nbsp;<span class="glyphicon glyphicon-remove" onclick="removeTab('+i+')" style="cursor: pointer; color: black"></span></a></li>');
+        $('#tabDiv').append('<div role="tabpanel" class="tab-pane" id="div' + i + '"> <iframe src="'+url+'" width="100%" height="'+height+'"></iframe></div>');
+        $('#tabMenu a:last').tab('show');
+        i++;
+    }
+    function removeTab(index) {
+
+        if ($('#li' + index).hasClass('active')) {
+            var prevLi = $('#li' + index).prev();
+            var prevDiv = $('#div' + index).prev();
+
+            prevLi.addClass('active');
+            prevDiv.addClass('active');
+        }
+
+
+
+        $('#li' + index).remove();
+        $('#div' + index).remove();
+    }
+   
+</script>
+}
+
+
+
+
+
+
+

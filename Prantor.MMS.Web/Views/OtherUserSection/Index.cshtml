@@ -1,0 +1,105 @@
+﻿@model Prantor.MMS.Framework.Result<List<Prantor.MMS.Entities.Section>>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_InnerLayout.cshtml";
+}
+
+<h1>Section Information</h1>
+<b>Search:</b>
+<input value="@Request.Params["key"]" type="text" id="searchKey" />&nbsp;
+<button class="btn btn-xs btn-default" onclick="SearchClick('@Url.Action("Index", "OtherUserSection", new { key = "" })')">Search</button>&nbsp;
+<button class="btn btn-xs btn-default" onclick="RefreshClick('@Url.Action("Index", "OtherUserSection", new { key = "" })')">Refresh</button>&nbsp;
+<a class="btn btn-xs btn-primary" href="@Url.Action("Add", "OtherUserSection", new { id = -1 })">Add</a>&nbsp;
+<br />
+<br />
+
+@if (!string.IsNullOrEmpty(ViewBag.Error))
+{
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Error!</strong> @ViewBag.Error
+    </div>
+}
+
+@if (Model.HasError)
+{
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Error!</strong> @Model.Message
+    </div>
+}
+
+else
+{
+    <table class="table table-bordered table-hover">
+        <tr>
+            <td>
+            <strong>ID</strong>
+            
+            </td>
+            <td>
+                <strong>Section Name</strong>
+            </td>
+            <td>
+                <strong>Action</strong>
+            </td>
+
+        </tr>
+        @foreach (var _section in Model.Data)
+        {
+           
+            try
+            {
+                if (@_section.MadrasaId == @Prantor.MMS.Web.Framework.HttpUtil.UserProfile.MadrasaID)
+                { 
+                    <tr>
+                        
+                        <td>@_section.ID</td>
+                        <td>@_section.Name</td>                   
+                        <td>
+                            <a class="btn btn-xs btn-info" href="@Url.Action("Edit", "OtherUserSection", new { id = _section.ID })">Edit</a>  |
+                            <a class="btn btn-xs btn-danger" href="#" onclick="DeleteUserInfo('@Url.Action("Delete", "OtherUserSection", new { id = _section.ID })')">Delete</a>
+                        </td>
+                    </tr>
+                }
+                    
+            }
+
+            
+            catch (Exception ex)
+            {
+
+            }
+
+
+
+        }
+    </table>
+}
+
+@section scripts
+{
+    <script>
+        function SearchClick(url) {
+            var value = $('#searchKey').val();
+            url = url + '/Index/?key=' + value;
+            window.location.href=url;
+        }
+        function RefreshClick(url) {
+            var value = "";
+            url = url + '/Index/?key=' + value;
+            window.location.href=url;
+        }
+        function DeleteUserInfo(url) {
+
+            if (confirm("Are you Sure?"))
+                window.location.href = url;
+
+        }
+    </script>
+}
+
+
+
+
+

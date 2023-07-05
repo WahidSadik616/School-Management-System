@@ -1,0 +1,208 @@
+﻿@model Prantor.MMS.Model.ClassSectionSubjectModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_InnerLayout.cshtml";
+}
+<script src="~/Scripts/jquery-3.6.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        
+        GetAssignedSections();
+       
+        $("#btnSave").click(function () {
+
+            AddClassSubject();
+        });
+
+        $("#btnSelectAll").click(function () {
+            SelectAllSections();
+        });
+
+        $("#ddClass").change(function () {
+            GetAssignedSections();
+        });
+
+        $("#dpdlSection").change(function () {
+            GetAssignedSubject();
+        });
+       
+    });
+
+    function AddClassSubject() {
+        var listOfSubjectId = [];
+        
+        $.each($("#tableSections input[type=checkbox]:checked"), function (index, data) {
+            listOfSubjectId.push($(this).val());
+
+        });
+        
+        $.ajax({
+            async: true,
+            type: 'POST',
+            dataType: 'JSON',
+            contentType: 'application/json; charset=utf-8',
+            url: '/OtherUserClassSectionSubject/Add',
+            data: JSON.stringify({ classId: $("#ddClass").val(), sectionId: $("#dpdlSection").val(), listOfSubjectId: listOfSubjectId }),
+            success: function (data) {
+                if (data.success === true) {
+                    alert(data.message);
+                   
+                }
+            },
+            error: function () {
+                alert('There is some problem to process your request.');
+            }
+        });
+    }
+
+    function ResetCheckBox() {
+        $.each($("#tableSections input[type=checkbox]:checked"), function (index, data) {
+            $(this).prop('checked', false);
+        });
+
+    }
+
+    function SelectAllSections() {
+        var listOfSectionId = [];
+        $.each($("#tableSections input[type=checkbox]"), function (index, data) {
+            $(this).prop('checked', true);
+        });
+    }
+
+    function GetAssignedSections() {
+        var classId = $("#ddClass").val();
+        $.ajax({
+            async: true,
+            type: 'POST',
+            dataType: 'JSON',
+            contentType: 'application/json; charset=utf-8',
+            url: '/OtherUserClassSectionSubject/GetAssignedSections',
+            data: JSON.stringify({ classId: classId }),
+            success: function (data) {
+                SetAssignedSections(data);
+                GetAssignedSubject();
+            },
+            error: function () {
+                alert('There is some problem to process your request.');
+            }
+        });
+    }
+
+    function SetAssignedSections(getData) {
+
+        $("#dpdlSection").empty();
+        //$("#dpdlSection").append("<option>Select Section</option>");
+
+        $.each(getData.data, function (index, da) {
+
+            var option = "<option value=" + da.SectionID + ">" + da.SectionName + "</option>";
+            $("#dpdlSection").append(option);
+        });
+
+    }
+
+    function GetAssignedSubject() {
+
+        var classId = $("#ddClass").val();
+        var sectionId = $("#dpdlSection").val();
+       
+        $.ajax({
+            async: true,
+            type: 'POST',
+            dataType: 'JSON',
+            contentType: 'application/json; charset=utf-8',
+            url: '/OtherUserClassSectionSubject/GetAssignedSubjects',
+            data: JSON.stringify({ classId: classId, sectionId: sectionId }),
+            success: function (data) {
+                SetCheckedAndUnccheckedSubjects(data);
+            },
+            error: function () {
+                alert('There is some problem to process your request.');
+
+            }
+        });
+
+    }
+
+
+    function SetCheckedAndUnccheckedSubjects(getData) {
+
+        $.each($("#tableSections input[type=checkbox]"), function (index, data) {
+            $(this).prop('checked', false);
+        });
+        $.each($("#tableSections input[type=checkbox]"), function () {
+            var subjectId = $(this).val();
+
+            var SubjectData = $(this);
+            $.each(getData.data, function (index, da) {
+                var assignedSubjectId = da.SubjectID;
+                if (subjectId == assignedSubjectId) {
+                    SubjectData.prop('checked', true);
+                }
+            });
+        });
+
+    }
+
+
+</script>
+
+<h2 class="text-center">Assign Subject to Class</h2>
+<div class="row">
+    <div class="col-md-3"></div>
+
+    <div class="col-md-6 boxDiv" align="center">
+        <br />
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { }))
+        {
+            
+            <div class="form-group">
+                @Html.LabelFor(m => m.ClassId, new { @class = "control-label" })
+                @Html.DropDownListFor(m => m.ClassId, Model.ListOfClasses, new { @class = "form-control", @id = "ddClass" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.SectionId, new { @class = "control-label" })
+                <br />
+                <select id="dpdlSection">
+                   
+                </select>
+
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.SubjectId, new { @class = "control-label" })
+
+                <table id="tableSections">
+                    @foreach (var subjects in Model.ListOfSubjects)
+                    {
+                        
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="@subjects.SubjectName" value="@subjects.SubjectId" checked="@subjects.IsSelected" />  @subjects.SubjectName
+                            </td>
+                        </tr>
+
+                    }
+                </table>
+            </div>
+          
+            <div>
+                <input type="button" value="Save" name="Save" id="btnSave" class="btn btn-primary" />
+                <input type="button" value="Select All" name="selectall" id="btnSelectAll" class="btn btn-primary" />
+            </div>
+        }
+        <br />
+    </div>
+    <div class="col-md-3"></div>
+</div>
+
+
+
+
+
+
+
+
+
+

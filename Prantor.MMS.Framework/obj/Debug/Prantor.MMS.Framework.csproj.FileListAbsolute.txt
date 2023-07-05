@@ -1,0 +1,5 @@
+C:\Users\DELL\documents\visual studio 2013\Projects\Prantor.MMS.WebSln\Prantor.MMS.Framework\bin\Debug\Prantor.MMS.Framework.dll
+C:\Users\DELL\documents\visual studio 2013\Projects\Prantor.MMS.WebSln\Prantor.MMS.Framework\bin\Debug\Prantor.MMS.Framework.pdb
+C:\Users\DELL\documents\visual studio 2013\Projects\Prantor.MMS.WebSln\Prantor.MMS.Framework\obj\Debug\Prantor.MMS.Framework.csprojResolveAssemblyReference.cache
+C:\Users\DELL\documents\visual studio 2013\Projects\Prantor.MMS.WebSln\Prantor.MMS.Framework\obj\Debug\Prantor.MMS.Framework.dll
+C:\Users\DELL\documents\visual studio 2013\Projects\Prantor.MMS.WebSln\Prantor.MMS.Framework\obj\Debug\Prantor.MMS.Framework.pdb

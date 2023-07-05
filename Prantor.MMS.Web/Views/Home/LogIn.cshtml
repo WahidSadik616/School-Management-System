@@ -1,0 +1,57 @@
+﻿
+@model Prantor.MMS.Model.LogInModel
+@{
+    ViewBag.Title = "LogIn";
+}
+
+<h2 class="text-center">LogIn</h2>
+<style>
+    .required::after {
+        content: " *";
+        color: red;
+        font-size: 20px;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 boxDiv" align="center">
+        <br />
+        @if(!string.IsNullOrEmpty(ViewBag.Message))
+        {
+            <div class="alert alert-dismissible alert-danger">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Oh snap!</strong> @ViewBag.Message
+</div>
+        }
+        
+        @using(Html.BeginForm("LogIn"))
+        {
+           
+            <div class="form-group">
+                @Html.LabelFor(m => m.UserName, new { @class = "required" })
+                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "User Name" })
+                @Html.ValidationMessageFor(m => m.UserName)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Password, new { @class = "required" })
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                @Html.ValidationMessageFor(m => m.Password)
+            </div>
+            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span> LogIn</button>
+        }
+        <br />
+    </div>
+    <div class="col-md-3"></div>
+</div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#loginMenu").addClass('active');
+        });  
+    </script>
+
+
+}
+

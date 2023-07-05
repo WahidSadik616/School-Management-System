@@ -1,0 +1,15 @@
+C:\Users\DELL\documents\visual studio 2013\Projects\Prantor.MMS.WebSln\Prantor.MMS.BL\bin\Debug\Prantor.MMS.BL.dll
+C:\Users\DELL\documents\visual studio 2013\Projects\Prantor.MMS.WebSln\Prantor.MMS.BL\bin\Debug\Prantor.MMS.BL.pdb
+C:\Users\DELL\documents\visual studio 2013\Projects\Prantor.MMS.WebSln\Prantor.MMS.BL\obj\Debug\Prantor.MMS.BL.csprojResolveAssemblyReference.cache
+C:\Users\DELL\documents\visual studio 2013\Projects\Prantor.MMS.WebSln\Prantor.MMS.BL\obj\Debug\Prantor.MMS.BL.dll
+C:\Users\DELL\documents\visual studio 2013\Projects\Prantor.MMS.WebSln\Prantor.MMS.BL\obj\Debug\Prantor.MMS.BL.pdb
+C:\Users\DELL\documents\visual studio 2013\Projects\Prantor.MMS.WebSln\Prantor.MMS.BL\bin\Debug\EntityFramework.dll
+C:\Users\DELL\documents\visual studio 2013\Projects\Prantor.MMS.WebSln\Prantor.MMS.BL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\DELL\documents\visual studio 2013\Projects\Prantor.MMS.WebSln\Prantor.MMS.BL\bin\Debug\Prantor.MMS.Data.dll
+C:\Users\DELL\documents\visual studio 2013\Projects\Prantor.MMS.WebSln\Prantor.MMS.BL\bin\Debug\Prantor.MMS.Entities.dll
+C:\Users\DELL\documents\visual studio 2013\Projects\Prantor.MMS.WebSln\Prantor.MMS.BL\bin\Debug\Prantor.MMS.Framework.dll
+C:\Users\DELL\documents\visual studio 2013\Projects\Prantor.MMS.WebSln\Prantor.MMS.BL\bin\Debug\Prantor.MMS.Data.pdb
+C:\Users\DELL\documents\visual studio 2013\Projects\Prantor.MMS.WebSln\Prantor.MMS.BL\bin\Debug\Prantor.MMS.Entities.pdb
+C:\Users\DELL\documents\visual studio 2013\Projects\Prantor.MMS.WebSln\Prantor.MMS.BL\bin\Debug\Prantor.MMS.Framework.pdb
+C:\Users\DELL\documents\visual studio 2013\Projects\Prantor.MMS.WebSln\Prantor.MMS.BL\bin\Debug\EntityFramework.xml
+C:\Users\DELL\documents\visual studio 2013\Projects\Prantor.MMS.WebSln\Prantor.MMS.BL\bin\Debug\EntityFramework.SqlServer.xml

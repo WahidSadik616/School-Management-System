@@ -1,0 +1,135 @@
+﻿@model Prantor.MMS.Framework.Result<List<Prantor.MMS.Entities.Student>>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_InnerLayout.cshtml";
+}
+
+<h1>Student Information</h1>
+<b>Search:</b>
+<input value="@Request.Params["key"]" type="text" id="searchKey" />&nbsp;
+<button class="btn btn-xs btn-default" onclick="SearchClick('@Url.Action("Index", "OtherUserStudent", new { key = "" })')">Search</button>&nbsp;
+<button class="btn btn-xs btn-default" onclick="RefreshClick('@Url.Action("Index", "OtherUserStudent", new { key = "" })')">Refresh</button>&nbsp;
+<a class="btn btn-xs btn-primary" href="@Url.Action("Add", "OtherUserStudent", new { id = -1 })">Add</a>&nbsp;
+<br />
+<br />
+
+@if (!string.IsNullOrEmpty(ViewBag.Error))
+{
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Error!</strong> @ViewBag.Error
+    </div>
+}
+
+@if (Model.HasError)
+{
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Error!</strong> @Model.Message
+    </div>
+}
+
+else
+{
+    <table class="table table-bordered table-hover">
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Father</td>
+            <td>PhoneNo.</td>
+            <td>Address</td>
+            <td>BloodGr.</td>
+            <td>DOB</td>
+            <td>Action</td>
+
+        </tr>
+        @foreach (var student in Model.Data)
+        {
+            try
+            {
+                if (@student.MadrasaId == @Prantor.MMS.Web.Framework.HttpUtil.UserProfile.MadrasaID)
+                {
+                   <tr>
+                       
+                        <td>@student.ID</td>
+                        <td>@student.Name</td>
+                        <td>@student.FatherName</td>
+                        <td>@student.PhoneNo</td>
+                        <td>@student.Address</td>
+                        @if (@student.BloodGroupId == 0)
+                        {
+                            <td>APos</td>
+                        }
+                        @if (@student.BloodGroupId == 1)
+                        {
+                            <td>ANeg</td>
+                        }
+                        @if (@student.BloodGroupId == 2)
+                        {
+                            <td>BPos</td>
+                        }
+                        @if (@student.BloodGroupId == 3)
+                        {
+                            <td>BNeg</td>
+                        }
+                        @if (@student.BloodGroupId == 4)
+                        {
+                            <td>ABPos</td>
+                        }
+                        @if (@student.BloodGroupId == 5)
+                        {
+                            <td>ABNeg</td>
+                        }
+                        @if (@student.BloodGroupId == 6)
+                        {
+                            <td>OPos</td>
+                        }
+                        @if (@student.BloodGroupId == 7)
+                        {
+                            <td>ONeg</td>
+                        }
+                        <td>@student.DateOfBirth</td>
+                        <td>                          
+                            <a class="btn btn-xs btn-info" href="@Url.Action("Edit", "OtherUserStudent", new { id = student.ID })">Edit</a>  |
+                            <a class="btn btn-xs btn-danger" href="#" onclick="DeleteUserInfo('@Url.Action("Delete", "OtherUserStudent", new { id = student.ID })')">Delete</a>
+                        </td>
+                    </tr>
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+
+
+        }
+    </table>
+}
+
+@section scripts
+{
+    <script>
+        function SearchClick(url) {
+            var value = $('#searchKey').val();
+            url = url + '/Index/?key=' + value;
+            window.location.href=url;
+        }
+        function RefreshClick(url) {
+            var value = "";
+            url = url + '/Index/?key=' + value;
+            window.location.href=url;
+        }
+        function DeleteUserInfo(url) {
+            
+          if (confirm("Are you Sure?"))
+             window.location.href = url; 
+       
+        }
+    </script>
+}
+
+
+
+

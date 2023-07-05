@@ -1,0 +1,156 @@
+﻿@model Prantor.MMS.Framework.Result<List<Prantor.MMS.Entities.TimeTable>>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_InnerLayout.cshtml";
+}
+
+
+<h1>Class TimeTable</h1>
+<!--<b>Search:</b>
+<input value="Request.Form["key"].ToString()" id="searchKey" />&nbsp;
+<button class="btn btn-xs btn-default" onclick="SearchClick('Url.Action("Index", "OtherUserSection", new { key = "" })')">Search</button>&nbsp;
+<button class="btn btn-xs btn-default" onclick="RefreshClick('Url.Action("Index", "OtherUserSection", new { key = "" })')">Refresh</button>&nbsp;
+<a class="btn btn-xs btn-primary" href="Url.Action("Add", "OtherUserSection", new { id = -1 })">Add</a>&nbsp;
+<br />
+<br />-->
+<a class="btn btn-xs btn-primary" href="@Url.Action("Add", "OtherUserTimeTable", new { id = -1 })">Add Time Schedule</a>
+<br />
+<br />
+@if (!string.IsNullOrEmpty(ViewBag.Error))
+{
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Error!</strong> @ViewBag.Error
+    </div>
+}
+
+@if (Model.HasError)
+{
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Error!</strong> @Model.Message
+    </div>
+}
+
+else
+{
+
+    <table class="table table-bordered table-hover">
+        <tr>
+            <td>
+                <strong>Subject</strong>
+
+            </td>
+            <td>
+                <strong>@Prantor.MMS.Framework.EnumCollection.WeekNameEnum.Saturday.ToString()</strong>
+            </td>
+            <td>
+                <strong>@Prantor.MMS.Framework.EnumCollection.WeekNameEnum.Sunday.ToString()</strong>
+            </td>
+            <td>
+                <strong>@Prantor.MMS.Framework.EnumCollection.WeekNameEnum.Monday.ToString()</strong>
+            </td>
+            <td>
+                <strong>@Prantor.MMS.Framework.EnumCollection.WeekNameEnum.Tuesday.ToString()</strong>
+            </td>
+            <td>
+                <strong>@Prantor.MMS.Framework.EnumCollection.WeekNameEnum.Wednesday.ToString()</strong>
+            </td>
+            <td>
+                <strong>@Prantor.MMS.Framework.EnumCollection.WeekNameEnum.Thursday.ToString()</strong>
+            </td>
+            <td>
+                <strong>@Prantor.MMS.Framework.EnumCollection.WeekNameEnum.Friday.ToString()</strong>
+            </td>
+
+        </tr>
+        @foreach (var _timeTable in Model.Data)
+        {
+
+            try
+            {
+                if (@_timeTable.MadrasaId == @Prantor.MMS.Web.Framework.HttpUtil.UserProfile.MadrasaID)
+                {
+                    <tr>
+
+                        <td>@_timeTable.SubjectName</td>
+                       
+                    </tr>
+                }
+
+            }
+
+
+            catch (Exception ex)
+            {
+
+            }
+
+
+
+        }
+        @foreach (var _timeTable in Model.Data)
+        {
+
+            try
+            {
+                if (@_timeTable.MadrasaId == @Prantor.MMS.Web.Framework.HttpUtil.UserProfile.MadrasaID)
+                {
+                    <tr>
+
+                        <td>
+                            <strong style="color:green">
+                                @_timeTable.StartTime -- @_timeTable.EndTime</strong>
+                                <br />
+                                <strong style="color:green"> Room Number : @_timeTable.RoomNum</strong>
+</td>
+
+                    </tr>
+                }
+
+            }
+
+
+            catch (Exception ex)
+            {
+
+            }
+
+
+
+        }
+    </table>
+}
+
+@section scripts
+{
+    <script>
+        function SearchClick(url) {
+            var value = $('#searchKey').val();
+            url = url + '/Index/?key=' + value;
+            window.location.href=url;
+        }
+        function RefreshClick(url) {
+            var value = "";
+            url = url + '/Index/?key=' + value;
+            window.location.href=url;
+        }
+        function DeleteUserInfo(url) {
+
+            if (confirm("Are you Sure?"))
+                window.location.href = url;
+
+        }
+    </script>
+}
+
+
+
+
+
+
+
+
+
+
+

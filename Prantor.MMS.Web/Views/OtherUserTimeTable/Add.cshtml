@@ -1,0 +1,60 @@
+﻿@model Prantor.MMS.Framework.Result<List<Prantor.MMS.Entities.TimeTable>>
+        @{
+            ViewBag.Title = "Add";
+            Layout = "~/Views/Shared/_InnerLayout.cshtml";
+        }
+
+        <h2>Add</h2>
+
+        <table class="table table-bordered table-hover">
+            <tr>
+                <td>
+                    <strong style="color:blue">Day</strong>
+
+                </td>
+                <td>
+                    <strong>Start Time</strong>
+                </td>
+                <td>
+                    <strong>End Time</strong>
+                </td>
+                <td>
+                    <strong>Room Number</strong>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <strong>@Prantor.MMS.Framework.EnumCollection.WeekNameEnum.Saturday.ToString()</strong>
+
+                </td>
+                <td>
+                    <div class="form-group">
+
+                        <div class='input-group date col-xs-8 col-sm-6' id='timeout'>
+
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-time">
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <strong>@Prantor.MMS.Framework.EnumCollection.WeekNameEnum.Sunday.ToString()</strong>
+
+                </td>
+            </tr>
+
+        </table>
+
+
+        <script>
+$(function () {
+    $('#timeout').datetimepicker({
+        format: 'LT'
+    });
+});</script>

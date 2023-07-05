@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+
+<h1 style="text-align:center">Our Awesome Team</h1>
+<br />
+<div class="container" style="width:60%">
+    <div class="row-cols-auto">
+        <div class="col-md-4">
+            <img src="/Photo/sadik.png" alt="sadik" style="width: 60%;" >
+            <h2>Md. Wahid Sadik</h2>
+            <h4 style="color: black">CEO</h4>
+            <p style="color:black">Phone: 01304195004</p>
+           </div>
+        <div class="col-md-4">
+            <img src="/Photo/asad.png" alt="asad" style="width: 60%;">
+            <h2>Mawlana Asad Jamil</h2>
+            <h4 style="color: black">Founder</h4>
+            <p style="color:black">Phone: 01704041498</p>
+            </div>
+        <div class="col-md-4">
+            <img src="/Photo/ismile.png" alt="asad" style="width: 60%;">
+            <h2>Mawlana Ismail Bin Haidar</h2>
+            <h4 style="color: black">Co-ordinator</h4>
+            <p style="color:black">Phone: 01743200779</p>
+        </div>
+
+        </div>
+</div>
+        
+
+
+
+        @section scripts{   
+            <script>
+                $(document).ready(function () {
+                    $("#aboutMenu").addClass('active');
+                });
+            </script>
+        }

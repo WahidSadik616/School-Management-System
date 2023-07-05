@@ -1,0 +1,240 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-3">
+
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-info">
+                <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                        <a style="text-decoration:none; display:block;" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            <span class="glyphicon glyphicon-user"></span>
+                            Users
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body" style="border-style:solid">
+                        <div class="list-group table-of-contents">
+                            <a class="list-group-item" href="#" onclick="AddTab('UserInfo', '@Url.Action("Index","CompanyAdminUserInfo")')">
+                                <span class="glyphicon glyphicon-user"></span>
+                                UserInfo
+                            </a>
+
+                            <a class="list-group-item" href="#" onclick="AddTab('Student', '@Url.Action("Index", "CompanyAdminStudent")')">
+                                <span class="glyphicon glyphicon-user"></span>
+                                Students
+                            </a>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-info">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                    <h4 class="panel-title">
+                        <a style="text-decoration: none; display: block;" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <span class="glyphicon glyphicon-education"></span>
+                            Academic
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="panel-body" style="border-style:solid">
+                        <div class="list-group table-of-contents">
+                            
+                            <a class="list-group-item" href="#" onclick="AddTab('Class')">
+                                <span class="glyphicon glyphicon-education"></span>
+                                Class
+                            </a>
+
+                            <a class="list-group-item" href="#" onclick="AddTab('Subject')">
+                                <span class="glyphicon glyphicon-education"></span>
+                                Subject
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="panel panel-info">
+                <div class="panel-heading" role="tab" id="headingThree">
+                    <h4 class="panel-title">
+                        <a style="text-decoration: none; display: block;" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <span class="glyphicon glyphicon-list-alt"></span>
+                            Attendance
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                    <div class="panel-body" style="border-style:solid">
+                        <div class="list-group table-of-contents">
+                            <a class="list-group-item" href="#" onclick="AddTab('Student Attendance')">
+                                <span class="glyphicon glyphicon-list-alt"></span>
+                                Student Attendance
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="panel panel-info">
+                <div class="panel-heading" role="tab" id="headingFour">
+                    <h4 class="panel-title">
+                        <a style="text-decoration: none; display: block;" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            <span class="glyphicon glyphicon-edit"></span>
+                            Exam
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                    <div class="panel-body" style="border-style:solid">
+                        <div class="list-group table-of-contents">
+                            
+
+                            <a class="list-group-item" href="#" onclick="AddTab('Exam Grade')">
+                                <span class="glyphicon glyphicon-edit"></span>
+                                Exam Grade
+                            </a>
+
+                            <a class="list-group-item" href="#" onclick="AddTab('Exam Attendance')">
+                                <span class="glyphicon glyphicon-edit"></span>
+                                Exam Attendance
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="panel panel-info">
+                <div class="panel-heading" role="tab" id="headingFive">
+                    <h4 class="panel-title">
+                        <a style="text-decoration: none; display: block;" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            <span class="glyphicon glyphicon-check"></span>
+                            Mark
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                    <div class="panel-body" style="border-style:solid">
+                        <div class="list-group table-of-contents">
+                            <a class="list-group-item" href="#" onclick="AddTab('Mark')">
+                                <span class="glyphicon glyphicon-check"></span>
+                                Mark
+                            </a>
+
+                            <a class="list-group-item" href="#" onclick="AddTab('Mark Distribution')">
+                                <span class="glyphicon glyphicon-check"></span>
+                                Mark Distribution
+                            </a> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="panel panel-info">
+                <div class="panel-heading" role="tab" id="heading22">
+                    <h4 class="panel-title">
+                        <a style="text-decoration: none; display: block;" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse22" aria-expanded="false" aria-controls="collapse22">
+                            <span class="glyphicon glyphicon-cog"></span>
+                            Settings
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse22" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading22">
+                    <div class="panel-body" style="border-style:solid">
+                        <div class="list-group table-of-contents">
+                            <a class="list-group-item" href="@Url.Action("Edit", "CompanyAdminMadrasa", new { id = @Prantor.MMS.Web.Framework.HttpUtil.UserProfile.MadrasaID })">
+                                <span class="glyphicon glyphicon-cog"></span>
+                                General Settings
+                            </a>
+                            
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-md-9" style="height:500px; border-left: 1px solid black">
+
+
+        <div>
+
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist" id="tabMenu">
+                <li role="presentation" class="active" id="li1"><a href="#div1" aria-controls="home" role="tab" data-toggle="tab">Dashboard</a></li>
+
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content" id="tabDiv">
+                <div role="tabpanel" class="tab-pane active" id="div1">Dashboard</div>
+
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+</div>
+
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#accordion").on('click', function () {
+                $(".collapse").removeClass("show");
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#homeMenu").addClass('active');
+        });
+    </script>
+
+    <script>
+        var i = 2;
+        function AddTab(name, url) {
+            var height = $(document).height() - 150;
+            $('#tabMenu').append('<li role="presentation" id="li' + i + '"><a href="#div' + i + '" aria-controls="home" role="tab" data-toggle="tab">' + name + '&nbsp;&nbsp;<span class="glyphicon glyphicon-remove" onclick="removeTab(' + i + ')" style="cursor: pointer; color: black"></span></a></li>');
+            $('#tabDiv').append('<div role="tabpanel" class="tab-pane" id="div' + i + '"><iframe src="' + url + '" width="100%" height="' + height + '"></iframe></div>');
+            $('#tabMenu a:last').tab('show');
+            i++;
+        }
+
+        function removeTab(index) {
+
+            if ($('#li' + index).hasClass('active')) {
+                var prevLi = $('#li' + index).prev();
+                var prevDiv = $('#div' + index).prev();
+
+                prevLi.addClass('active');
+                prevDiv.addClass('active');
+            }
+
+
+
+            $('#li' + index).remove();
+            $('#div' + index).remove();
+        }
+        
+    </script>
+}
+

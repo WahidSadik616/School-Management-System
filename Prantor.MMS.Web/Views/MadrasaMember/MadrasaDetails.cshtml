@@ -1,0 +1,47 @@
+﻿@model Prantor.MMS.Entities.Madrasa
+@{
+    ViewBag.Title = "MadrasaDetails";
+    Layout = "~/Views/Shared/_MadrasaMemberLayout.cshtml";
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.Error))
+{
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Error!</strong> @ViewBag.Error
+    </div>
+}
+else
+{
+    <div align="center">
+    <h1>@Model.Name</h1>
+    <h3>@Model.Address</h3>
+
+    <p><b>Director:</b> @Model.DirectorName</p>
+    <p><b>Contact Number:</b> @Model.ContactNo</p>
+    <p><a class="btn btn-primary"  onclick="AppliedUser('@Html.Raw(@Url.Action("Apply", "MadrasaMember", new { id = @Prantor.MMS.Web.Framework.HttpUtil.UserProfile.ID, madrasaId = @Model.ID }))')">Apply</a>&nbsp;</p>
+</div>
+}
+
+
+
+@section scripts
+{
+    <script>
+       
+        function AppliedUser(url) {
+            if (confirm("If you press Ok, You will logged out"))
+                window.location.href = url;
+        }
+    </script>
+}
+
+
+
+
+
+
+
+
+
+

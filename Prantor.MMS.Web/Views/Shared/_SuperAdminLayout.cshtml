@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")   
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datepicker.min.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="@Url.Action("Index", "SuperAdmin")">نظام إدارة المدرسة</a>             
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                <ul class="nav navbar-nav">
+                    <li id="homeMenu"><a href="@Url.Action("Index","SuperAdmin")"><span class="glyphicon glyphicon-home"></span> Home </a></li>
+                    
+                    
+                    
+                </ul>
+               
+                <ul class="nav navbar-nav navbar-right">
+                    <li id="prfMenu"><a href="@Url.Action("Profile", "SuperAdmin")"><span class="glyphicon glyphicon-user"></span> Welcome, @Prantor.MMS.Web.Framework.HttpUtil.UserProfile.Name </a></li>
+                    <li id="logoutMenu"><a href="@Url.Action("LogOut","Home")"><span class="glyphicon glyphicon-log-out"></span> LogOut</a></li>
+
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br />
+    <div class="container-fluid body-content">
+        @RenderBody()
+        
+    </div>
+    
+    
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/jquery-ui-1.13.2.min.js"></script>
+    <script src="~/Scripts/moment.min.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.min.js"></script> 
+    @RenderSection("scripts", required: false)
+    
+    
+</body>
+</html>
+
+

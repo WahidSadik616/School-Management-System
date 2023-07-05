@@ -1,0 +1,175 @@
+﻿@model Prantor.MMS.Framework.Result<List<Prantor.MMS.Entities.UserInfo>>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_InnerLayout.cshtml";
+}
+
+<h1>User Information</h1>
+<b>Search:</b>
+<input value="@Request.Params["key"]" type="text" id="searchKey" />&nbsp;
+<button class="btn btn-xs btn-default" onclick="SearchClick('@Url.Action("Index", "CompanyAdminUserInfo", new { key = "" })')">Search</button>&nbsp;
+<button class="btn btn-xs btn-default" onclick="RefreshClick('@Url.Action("Index", "CompanyAdminUserInfo", new { key = "" })')">Refresh</button>&nbsp;
+<a class="btn btn-xs btn-primary" href="@Url.Action("Add", "CompanyAdminUserInfo", new { id = -1 })">Add</a>&nbsp;
+<br />
+<br />
+
+@if (!string.IsNullOrEmpty(ViewBag.Error))
+{
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Error!</strong> @ViewBag.Error
+    </div>
+}
+
+@if (Model.HasError)
+{
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Error!</strong> @Model.Message
+    </div>
+}
+
+else
+{
+    <table class="table table-bordered">
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>PhoneNo.</td>
+            <td>Address</td>
+            <td>BloodGr.</td>
+            <td>Gender</td>
+            <td>Type</td>
+            <td>Status</td>
+            <td>Action</td>
+
+        </tr>
+        @foreach (var user in Model.Data)
+        {
+            try{
+                if ((@user.UserTypeId == 0
+                && @user.MadrasaId == @Prantor.MMS.Web.Framework.HttpUtil.UserProfile.MadrasaID)
+                || (@user.UserTypeId == 1
+                && @user.MadrasaId == @Prantor.MMS.Web.Framework.HttpUtil.UserProfile.MadrasaID))
+            {
+                <tr>                    
+                    
+                <td>@user.ID</td>
+                <td>@user.Name</td>
+                <td>@user.PhoneNo</td>
+                <td>@user.Address</td>
+                @if (@user.BloodGroupId == 0)
+                {
+                    <td>APos</td>
+                }
+                
+                @if (@user.BloodGroupId == 1)
+                {
+                    <td>ANeg</td>
+                }
+                @if (@user.BloodGroupId == 2)
+                {
+                    <td>BPos</td>
+                }
+                @if (@user.BloodGroupId == 3)
+                {
+                    <td>BNeg</td>
+                }
+                @if (@user.BloodGroupId == 4)
+                {
+                    <td>ABPos</td>
+                }
+                @if (@user.BloodGroupId == 5)
+                {
+                    <td>ABNeg</td>
+                }
+                @if (@user.BloodGroupId == 6)
+                {
+                    <td>OPos</td>
+                }
+                @if (@user.BloodGroupId == 7)
+                {
+                    <td>ONeg</td>
+                }
+                   
+                    @if (@user.GenderId == 0)
+                    {
+                        <td>Male</td>
+                    }
+                    @if (@user.GenderId == 1)
+                    {
+                        <td>Female</td>
+                    }
+                  
+
+                @if (@user.UserTypeId == 0)
+                {
+                    <td>Other</td>
+                }
+                @if (@user.UserTypeId == 1)
+                {
+                    <td>Admin</td>
+                }
+                @if (@user.UserTypeId == 2)
+                {
+                    <td>SuperAdmin</td>
+                }
+
+                @if (@user.StatusId == 0)
+                {
+                    <td>Active</td>
+                }
+                @if (@user.StatusId == 1)
+                {
+                    <td>Pending</td>
+                }
+                @if (@user.StatusId == 2)
+                {
+                    <td>Inactive</td>
+                }
+                
+                <td>
+                    <a class="btn btn-xs btn-info" href="@Url.Action("Edit", "CompanyAdminUserInfo", new { id = user.ID })">Edit</a>  |
+                    <a class="btn btn-xs btn-danger" href="#" onclick="DeleteUserInfo('@Url.Action("Delete", "CompanyAdminUserInfo", new { id = user.ID })')">Delete</a>
+                </td>
+                    
+                
+            </tr>
+            }
+            }
+            catch(Exception ex)
+            {
+                
+            }
+
+            
+            }
+                
+            
+            
+
+
+        
+    </table>
+}
+
+@section scripts
+{
+    <script>
+        function SearchClick(url) {
+            var value = $('#searchKey').val();
+            url = url + '/Index/?key=' + value;
+            window.location.href=url;
+        }
+        function RefreshClick(url) {
+            var value = "";
+            url = url + '/Index/?key=' + value;
+            window.location.href=url;
+        }
+        function DeleteUserInfo(url) {
+            if(confirm("Are you Sure?"))
+                window.location.href=url;
+        }
+    </script>
+}
+

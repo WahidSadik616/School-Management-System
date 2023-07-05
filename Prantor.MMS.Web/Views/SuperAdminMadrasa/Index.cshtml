@@ -1,0 +1,94 @@
+﻿@model Prantor.MMS.Framework.Result<List<Prantor.MMS.Entities.Madrasa>>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_InnerLayout.cshtml";
+}
+<h1>Madrasa Information</h1>
+<b>Search:</b>
+<input value="@Request.Params["key"]" type="text" id="searchKey" />&nbsp;
+<button class="btn btn-xs btn-default" onclick="SearchClick('@Url.Action("Index", "SuperAdminMadrasa", new { key = "" })')">Search</button>&nbsp;
+<button class="btn btn-xs btn-default" onclick="RefreshClick('@Url.Action("Index", "SuperAdminMadrasa", new { key = "" })')">Refresh</button>&nbsp;
+<a class="btn btn-xs btn-primary" href="@Url.Action("Add", "SuperAdminMadrasa", new { id = -1 })">Add</a>&nbsp;
+<br />
+<br />
+
+@if (!string.IsNullOrEmpty(ViewBag.Error))
+{
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Error!</strong> @ViewBag.Error
+    </div>
+}
+
+@if (Model.HasError)
+{
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Error!</strong> @Model.Message
+    </div>
+}
+
+else
+{
+    <table class="table table-bordered">
+        <tr>
+            <td>ID</td>
+            <td>Name</td>            
+            <td>Address</td>
+            <td>Director</td>
+            <td>ContactNo.</td>
+            <td>Action</td>
+        </tr>
+        @foreach (var madrasa in Model.Data)
+        {
+            try
+            {
+                if (@Prantor.MMS.Web.Framework.HttpUtil.UserProfile.MadrasaID != null)
+                {
+                     <tr>
+                <td>@madrasa.ID</td>
+                <td>@madrasa.Name</td>               
+                <td>@madrasa.Address</td>
+                <td>@madrasa.DirectorName</td>
+                <td>@madrasa.ContactNo</td>
+               
+                <td>
+                    <a class="btn btn-xs btn-info" href="@Url.Action("Edit", "SuperAdminMadrasa", new { id = madrasa.ID })">Edit</a>  |
+                    <a class="btn btn-xs btn-danger" href="#" onclick="DeleteUserInfo('@Url.Action("Delete", "SuperAdminMadrasa", new { id = madrasa.ID })')">Delete</a>
+                </td>
+            </tr>
+                }
+            }
+            catch(Exception ex)
+            {
+                
+            }
+
+        }
+    </table>
+}
+
+@section scripts
+{
+    <script>
+        function SearchClick(url) {
+            var value = $('#searchKey').val();
+            url = url + '/Index/?key=' + value;
+            window.location.href=url;
+        }
+        function RefreshClick(url) {
+            var value = "";
+            url = url + '/Index/?key=' + value;
+            window.location.href=url;
+        }
+        function DeleteUserInfo(url) {
+            if(confirm("Are you Sure?"))
+                window.location.href=url;
+        }
+    </script>
+}
+
+
+
+
+

@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EACDC1BF-2412-4025-BD60-4AF33F3F4FBD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Prantor.MMS.Data</RootNamespace>
+    <AssemblyName>Prantor.MMS.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServerCompact">
+      <HintPath>..\packages\EntityFramework.SqlServerCompact.6.2.0\lib\net45\EntityFramework.SqlServerCompact.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.SqlServer.Compact.4.0.8876.1\lib\net40\System.Data.SqlServerCe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Migrations\202303190108180_Initial.cs" />
+    <Compile Include="Migrations\202303190108180_Initial.Designer.cs">
+      <DependentUpon>202303190108180_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303220548483_addContactDirectorMadrasa.cs" />
+    <Compile Include="Migrations\202303220548483_addContactDirectorMadrasa.Designer.cs">
+      <DependentUpon>202303220548483_addContactDirectorMadrasa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303260811113_addStudentTable.cs" />
+    <Compile Include="Migrations\202303260811113_addStudentTable.Designer.cs">
+      <DependentUpon>202303260811113_addStudentTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304080826009_addSectionTable.cs" />
+    <Compile Include="Migrations\202304080826009_addSectionTable.Designer.cs">
+      <DependentUpon>202304080826009_addSectionTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304081707377_addForeignkeyMadrasaId.cs" />
+    <Compile Include="Migrations\202304081707377_addForeignkeyMadrasaId.Designer.cs">
+      <DependentUpon>202304081707377_addForeignkeyMadrasaId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304190535286_addClassTable.cs" />
+    <Compile Include="Migrations\202304190535286_addClassTable.Designer.cs">
+      <DependentUpon>202304190535286_addClassTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304190642219_addClassSectionTable.cs" />
+    <Compile Include="Migrations\202304190642219_addClassSectionTable.Designer.cs">
+      <DependentUpon>202304190642219_addClassSectionTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304190846225_updateClassSectionTable.cs" />
+    <Compile Include="Migrations\202304190846225_updateClassSectionTable.Designer.cs">
+      <DependentUpon>202304190846225_updateClassSectionTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304290142475_addSubject.cs" />
+    <Compile Include="Migrations\202304290142475_addSubject.Designer.cs">
+      <DependentUpon>202304290142475_addSubject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305030516470_addSectionName.cs" />
+    <Compile Include="Migrations\202305030516470_addSectionName.Designer.cs">
+      <DependentUpon>202305030516470_addSectionName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305070047410_addClassName.cs" />
+    <Compile Include="Migrations\202305070047410_addClassName.Designer.cs">
+      <DependentUpon>202305070047410_addClassName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305070054401_addMadrasa.cs" />
+    <Compile Include="Migrations\202305070054401_addMadrasa.Designer.cs">
+      <DependentUpon>202305070054401_addMadrasa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305071325004_addSubjectTable.cs" />
+    <Compile Include="Migrations\202305071325004_addSubjectTable.Designer.cs">
+      <DependentUpon>202305071325004_addSubjectTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305071340396_addSubjectTable1.cs" />
+    <Compile Include="Migrations\202305071340396_addSubjectTable1.Designer.cs">
+      <DependentUpon>202305071340396_addSubjectTable1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305101230321_addTimeTable.cs" />
+    <Compile Include="Migrations\202305101230321_addTimeTable.Designer.cs">
+      <DependentUpon>202305101230321_addTimeTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305101231296_addTimeTable1.cs" />
+    <Compile Include="Migrations\202305101231296_addTimeTable1.Designer.cs">
+      <DependentUpon>202305101231296_addTimeTable1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305130100008_UpdateTimeTable.cs" />
+    <Compile Include="Migrations\202305130100008_UpdateTimeTable.Designer.cs">
+      <DependentUpon>202305130100008_UpdateTimeTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="MMSDbContext.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Prantor.MMS.Entities\Prantor.MMS.Entities.csproj">
+      <Project>{ecaccea6-b173-49e1-af93-0a3be03115dd}</Project>
+      <Name>Prantor.MMS.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202303190108180_Initial.resx">
+      <DependentUpon>202303190108180_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303220548483_addContactDirectorMadrasa.resx">
+      <DependentUpon>202303220548483_addContactDirectorMadrasa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303260811113_addStudentTable.resx">
+      <DependentUpon>202303260811113_addStudentTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304080826009_addSectionTable.resx">
+      <DependentUpon>202304080826009_addSectionTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304081707377_addForeignkeyMadrasaId.resx">
+      <DependentUpon>202304081707377_addForeignkeyMadrasaId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304190535286_addClassTable.resx">
+      <DependentUpon>202304190535286_addClassTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304190642219_addClassSectionTable.resx">
+      <DependentUpon>202304190642219_addClassSectionTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304190846225_updateClassSectionTable.resx">
+      <DependentUpon>202304190846225_updateClassSectionTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304290142475_addSubject.resx">
+      <DependentUpon>202304290142475_addSubject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305030516470_addSectionName.resx">
+      <DependentUpon>202305030516470_addSectionName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305070047410_addClassName.resx">
+      <DependentUpon>202305070047410_addClassName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305070054401_addMadrasa.resx">
+      <DependentUpon>202305070054401_addMadrasa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305071325004_addSubjectTable.resx">
+      <DependentUpon>202305071325004_addSubjectTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305071340396_addSubjectTable1.resx">
+      <DependentUpon>202305071340396_addSubjectTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305101230321_addTimeTable.resx">
+      <DependentUpon>202305101230321_addTimeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305101231296_addTimeTable1.resx">
+      <DependentUpon>202305101231296_addTimeTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305130100008_UpdateTimeTable.resx">
+      <DependentUpon>202305130100008_UpdateTimeTable.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    if not exist "$(TargetDir)x86" md "$(TargetDir)x86"
+    xcopy /s /y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\x86\*.*" "$(TargetDir)x86"
+    if not exist "$(TargetDir)amd64" md "$(TargetDir)amd64"
+    xcopy /s /y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\amd64\*.*" "$(TargetDir)amd64"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

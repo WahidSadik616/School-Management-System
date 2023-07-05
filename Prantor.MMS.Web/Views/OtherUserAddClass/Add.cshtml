@@ -1,0 +1,100 @@
+﻿@model Prantor.MMS.Entities.Class
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_InnerLayout.cshtml";
+}
+
+<h2 class="text-center">Create New Class</h2>
+@if (!string.IsNullOrEmpty(ViewBag.Error))
+{
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Error!</strong> @ViewBag.Error
+    </div>
+}
+else
+{
+    <style>
+        .required::after {
+            content: " *";
+            color: red;
+            font-size: 20px;
+        }
+    </style>
+    <div class="row">
+<div class="col-md-3"></div>
+
+        <div class="col-md-6 boxDiv" align="center">
+            <br />
+            @if (!string.IsNullOrEmpty(ViewBag.Message))
+            {
+                <div class="alert alert-dismissible alert-danger">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Oh snap!</strong> @ViewBag.Message
+                </div>
+            }
+
+            @using (Html.BeginForm("Student"))
+            {
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Name, new { @class = "required" })
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @placeholder = "Name" })
+                    @Html.ValidationMessageFor(m => m.Name)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.MadrasaId, "Madrasa", htmlAttributes: new { @class = "required" })
+                    @{
+                Prantor.MMS.Data.MMSDbContext db = new Prantor.MMS.Data.MMSDbContext();
+                List<Prantor.MMS.Entities.Madrasa> ListMadrasa = db.Madrasas.ToList();
+
+                <select name="MadrasaId" class="form-control">
+                    @{
+
+                foreach (Prantor.MMS.Entities.Madrasa s in ListMadrasa)
+                {
+                    try
+                    {
+                        if (@s.ID == @Prantor.MMS.Web.Framework.HttpUtil.UserProfile.MadrasaID)
+                        {
+                            <option value="@s.ID">@s.Name</option>
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+
+
+                }
+                    }
+                </select>
+                    }
+                    @Html.ValidationMessageFor(m => m.MadrasaId)
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    Save
+                </button>
+            }
+            <br />
+        </div>
+<div class="col-md-3"></div>
+</div>
+    
+
+}
+
+
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#registerMenu").addClass('active');
+        });
+    </script>
+
+
+}
+
